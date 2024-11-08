@@ -38,8 +38,8 @@
             <div class="window">
                 <div id="augmentedAudio">
                     <div class="audio-container">
-                        <h4>Changed Frequency Version:</h4>
-                        <audio id="highFreqAudio" controls></audio>
+                        <h4>Low Frequency Version:</h4>
+                        <audio id="lowFreqAudio" controls></audio>
                     </div>
                 </div>
             </div>
@@ -70,8 +70,6 @@
         function clearContent() {
             document.getElementById('audioPlayer').src = '';
             document.getElementById('spectrogramImage').style.display = 'none';
-            document.getElementById('audioFeatures').innerHTML = '<h4>Audio Features:</h4>';
-            document.getElementById('highFreqAudio').src = '';
             document.getElementById('lowFreqAudio').src = '';
         }
 
@@ -122,7 +120,7 @@
                 const data = await response.json();
                 if (data.error) throw new Error(data.error);
 
-                document.getElementById('highFreqAudio').src = 'data:audio/wav;base64,' + data.high_freq;
+                document.getElementById('lowFreqAudio').src = 'data:audio/wav;base64,' + data.low_freq;
             } catch (error) {
                 console.error('Error augmenting audio:', error);
                 alert('Error augmenting audio: ' + error.message);
